@@ -1,0 +1,10 @@
+*.opensdf
+*.obj
+CG2048/CG2048/Debug/vc120.pdb
+*.idb
+*.ipch
+CG2048/Debug/CG2048.pdb
+*.pch
+CG2048/CG2048.sdf
+*.tlog
+CG2048/Debug/CG2048.ilk
