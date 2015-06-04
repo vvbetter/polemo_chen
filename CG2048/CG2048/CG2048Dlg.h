@@ -5,6 +5,7 @@
 #pragma once
 #include "afxwin.h"
 #include "DataDef.h"
+#include "GameModel.h"
 
 
 // CCG2048Dlg ¶Ô»°¿ò
@@ -38,7 +39,7 @@ public:
 	void UserUp();
 	void UserDown();
 private:
-	CArray<strData> m_pData;
+	CGameModel m_gm;
 public:
 	afx_msg void OnChar(UINT nChar, UINT nRepCnt, UINT nFlags);
 	virtual BOOL PreTranslateMessage(MSG* pMsg);

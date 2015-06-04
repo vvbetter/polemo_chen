@@ -1,3 +1,5 @@
+#pragma once
+
 #include"stdafx.h"
 struct strData
 {
@@ -6,12 +8,19 @@ struct strData
 	WORD r;
 	WORD g;
 	WORD b;
-	strData(){}
-	strData(CButton*p, int ig=0, WORD wr=0, WORD wg=0, WORD wb=0){
+	strData(){
+		pButton = NULL;
+		grade = 0;
+		r = 0;
+		g = 0;
+		b = 0;
+	}
+	strData(CButton* p, int gt = 0, int tr = 0, int tg = 0, int tb = 0)
+	{
 		pButton = p;
-		grade = ig;
-		r = wr;
-		g = wg;
-		b = wb;
+		grade = gt;
+		r = tr;
+		g = tg;
+		b = tb;
 	}
 };

@@ -19,13 +19,13 @@ class CAboutDlg : public CDialogEx
 public:
 	CAboutDlg();
 
-// 对话框数据
+	// 对话框数据
 	enum { IDD = IDD_ABOUTBOX };
 
-	protected:
+protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持
 
-// 实现
+	// 实现
 protected:
 	DECLARE_MESSAGE_MAP()
 };
@@ -48,7 +48,7 @@ END_MESSAGE_MAP()
 
 
 CCG2048Dlg::CCG2048Dlg(CWnd* pParent /*=NULL*/)
-	: CDialogEx(CCG2048Dlg::IDD, pParent)
+: CDialogEx(CCG2048Dlg::IDD, pParent)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -100,7 +100,8 @@ BOOL CCG2048Dlg::OnInitDialog()
 	// TODO:  在此添加额外的初始化代码
 
 	InitDataModel();
-	this->SetFocus();
+	m_gm.showBoxByRand();
+
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
@@ -157,15 +158,13 @@ HCURSOR CCG2048Dlg::OnQueryDragIcon()
 void CCG2048Dlg::InitDataModel()
 {
 	int ret = -1;
+	strData m_tempData;
 	for (int i = IDC_1; i <= IDC_16; i++)
 	{
 		CButton* pButton = (CButton*)GetDlgItem(i);
 		ASSERT(pButton != NULL);
-		strData m_data(pButton);
-		pButton->SetWindowTextW(L"0");
-		pButton->ShowWindow(SW_SHOW);
-		m_data.pButton = pButton;
-		m_pData.Add(m_data);
+		m_tempData.pButton = pButton;
+		m_gm.AddData(m_tempData);
 	}
 }
 
@@ -173,7 +172,7 @@ void CCG2048Dlg::InitDataModel()
 void CCG2048Dlg::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
 	// TODO:  在此添加消息处理程序代码和/或调用默认值
-	CString ss=L"abcdefg";
+	CString ss = L"abcdefg";
 	switch (nChar)
 	{
 	case 'a':
@@ -202,7 +201,7 @@ void CCG2048Dlg::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 BOOL CCG2048Dlg::PreTranslateMessage(MSG* pMsg)
 {
-	 //todo:  在此添加专用代码和/或调用基类
+	//todo:  在此添加专用代码和/或调用基类
 	if (pMsg->message == WM_CHAR)
 	{
 		pMsg->hwnd = m_hWnd;
